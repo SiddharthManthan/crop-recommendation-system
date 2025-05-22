@@ -33,11 +33,11 @@ connectToDatabase();
 // Unprotected routes
 app.use("/authentication", express.static("./crop-recommendation-website/public/authentication"));
 app.use("/static", express.static("./crop-recommendation-website/public/static"));
+app.use(authRoutes);
 app.get("*", requireAuth);
 
 app.use(express.static("./crop-recommendation-website/public"));
 app.get("*", checkUser);
-app.use(authRoutes);
 app.use("/api/data", requireAuth, dataListingRoutes);
 app.use("/api/isplantable", requireAuth, isPlantable);
 app.use("/api/farm", requireAuth, farmRoutes);
