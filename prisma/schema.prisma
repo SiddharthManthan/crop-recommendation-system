@@ -1,0 +1,61 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model State {
+  id       Int        @id @default(autoincrement())
+  name     String     @db.VarChar(255)
+  District District[]
+}
+
+model District {
+  id        Int      @id @default(autoincrement())
+  updatedAt DateTime @updatedAt
+  name      String   @db.VarChar(255)
+  storage   Decimal  @db.Decimal
+  stateId   Int
+  state     State    @relation(fields: [stateId], references: [id])
+  Farm      Farm[]
+  Notification      Notification[]
+}
+
+model Crop {
+  id                 Int      @id @default(autoincrement())
+  updatedAt          DateTime @updatedAt
+  cropName           String   @db.VarChar(255)
+  cropDuration       Int
+  waterRequirement   Int
+  numberOfIrrigation Int
+  Farm               Farm[]
+}
+
+model Farm {
+  id          Int       @id @default(autoincrement())
+  districtId  Int
+  district    District  @relation(fields: [districtId], references: [id])
+  area        Int
+  planted     Boolean   @default(false)
+  plantedArea Int?
+  plantedDate DateTime? @db.Date
+  cropId      Int?
+  crop        Crop?     @relation(fields: [cropId], references: [id])
+  userId      String    @db.VarChar(255)
+}
+
+model Notification {
+  id          Int       @id @default(autoincrement())
+  userType    Int
+  districtId  Int
+  district    District  @relation(fields: [districtId], references: [id])
+  daysTillExhaustion      Int?
+  updatedAt   DateTime  @updatedAt
+  dismissed     Boolean   @default(false)
+}

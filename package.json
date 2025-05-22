@@ -1,0 +1,31 @@
+{
+    "name": "crop-recommendation-server",
+    "version": "1.0.0",
+    "description": "API for crop recommendation system",
+    "main": "index.js",
+    "scripts": {
+        "start": "npx nodemon app.js localhost:3000",
+        "create-sample-db": "npx prisma migrate reset && npx prisma migrate dev --name init && node import-sample-data.js && node generate-farm-data.js",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "",
+    "license": "ISC",
+    "devDependencies": {
+        "csv": "^6.3.3",
+        "csv-parse": "^5.5.2",
+        "nodemon": "^3.0.1",
+        "prisma": "^5.3.1"
+    },
+    "dependencies": {
+        "@prisma/client": "^5.3.1",
+        "bcrypt": "^5.1.1",
+        "cookie-parser": "^1.4.6",
+        "dotenv": "^16.3.1",
+        "ejs": "^3.1.9",
+        "express": "^4.18.2",
+        "jsonwebtoken": "^9.0.2",
+        "moment": "^2.29.4",
+        "mongoose": "^7.6.1",
+        "validator": "^13.11.0"
+    }
+}

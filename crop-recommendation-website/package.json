@@ -1,0 +1,19 @@
+{
+    "name": "crop-recommendation",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "tailwind-watch": "npx tailwindcss -i ./src/style.css -o ./public/style.css --watch"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "flowbite": "^1.8.1"
+    },
+    "devDependencies": {
+        "tailwindcss": "^3.3.3"
+    }
+}
