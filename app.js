@@ -20,8 +20,8 @@ app.set("view engine", "ejs");
 // database connection
 const connectToDatabase = () => {
     mongoose
-        .connect(process.env.DBURI)
-        .then((result) => app.listen(process.env.JWTAUTHPORT))
+        .connect(process.env.CROP_RECOMMENDATION_MONGO_URL)
+        .then((result) => app.listen(process.env.CROP_RECOMMENDATION_API_PORT))
         .catch((err) => {
             console.log(err);
             setTimeout(connectToDatabase, 5000);

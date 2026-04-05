@@ -36,7 +36,7 @@ const handleErrors = (err) => {
 };
 
 const createToken = (id) => {
-    return jwt.sign({ id }, process.env.JWTSECRET, {
+    return jwt.sign({ id }, process.env.CROP_RECOMMENDATION_JWT_SECRET, {
         expiresIn : MAXAGE
     })
 }

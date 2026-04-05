@@ -50,7 +50,7 @@ const add_farm = async (req, res) => {
     let data, userId;
     // Get User
     const token = req.cookies.jwt;
-    jwt.verify(token, process.env.JWTSECRET, async (err, decodedToken) => {
+    jwt.verify(token, process.env.CROP_RECOMMENDATION_JWT_SECRET, async (err, decodedToken) => {
         if (!err) {
             let user = await User.findById(decodedToken.id);
             userId = user._id.toString();
